@@ -2,6 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="isokur.xsl"?>
 
 <Tarih_Date Tarih="20.12.2019" Date="12/20/2019"  Bulten_No="2019/240" >
+  
   <Currency CrossOrder="0" Kod="USD" CurrencyCode="USD">
     <Unit>1</Unit>
     <Isim>ABD DOLARI</Isim>

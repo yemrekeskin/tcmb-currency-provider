@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CurrencyProvider.Service;
+using System;
 
 namespace ConsoleApp
 {
@@ -6,7 +7,11 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.Write("Hello World");
+
+            var executer = new ServiceExecuter();
+
+            Console.ReadLine();
         }
     }
 }
