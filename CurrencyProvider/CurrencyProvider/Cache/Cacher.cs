@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Caching;
-using System.Text;
+﻿using Microsoft.Extensions.Caching.Memory;
+using System;
 
 namespace CurrencyProvider.Cache
 {
@@ -10,7 +8,7 @@ namespace CurrencyProvider.Cache
     {
         private MemoryCache MemoryCache { get; set; }
 
-        public T Add<T>(string name, T data)
+        public T Add<T>(string name, T data, TimeSpan? expiration)
         {
             T cached;
             if (!MemoryCache.TryGetValue<T>(name, out cached))
@@ -18,7 +16,7 @@ namespace CurrencyProvider.Cache
                 cached = data;
 
                 var opt = new MemoryCacheEntryOptions();
-                opt.SlidingExpiration = TimeSpan.FromHours(12);
+                opt.SlidingExpiration = expiration == null ? TimeSpan.FromHours(12) : expiration;
 
                 MemoryCache.Set(name, cached, opt);
             }

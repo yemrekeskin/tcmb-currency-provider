@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace CurrencyProvider.Model
+namespace CurrencyProvider.Entity
 {
     [Serializable]
     [XmlRoot("Tarih_Date")]
-    public class CurrencyList
+    public class CurrencyEntityList
     {
         [XmlElement("Currency")]
-        public List<Currency> Currencies { get; set; }
+        public List<CurrencyEntity> Currencies { get; set; }
 
         [XmlAttribute("Date")]
         public string Date { get; set; }

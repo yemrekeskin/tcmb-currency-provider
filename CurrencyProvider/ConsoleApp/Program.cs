@@ -1,4 +1,4 @@
-﻿using CurrencyProvider.Model;
+﻿using CurrencyProvider.Entity;
 using CurrencyProvider.Service;
 using System;
 
@@ -13,7 +13,7 @@ namespace ConsoleApp
             var executer = new ServiceExecuter();
             executer.ResponseType = ResponseType.XML;
             executer.Endpoint = "https://www.tcmb.gov.tr";
-            var data = executer.InvokeGet<CurrencyList>("/kurlar/today.xml");
+            var data = executer.InvokeGet<CurrencyEntityList>("/kurlar/today.xml");
 
             Console.ReadLine();
         }
