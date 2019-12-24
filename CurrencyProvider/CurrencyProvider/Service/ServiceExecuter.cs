@@ -1,4 +1,4 @@
-﻿using CurrencyProvider.Xml;
+﻿using CurrencyProvider.Extension;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

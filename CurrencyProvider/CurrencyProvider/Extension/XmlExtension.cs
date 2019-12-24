@@ -2,7 +2,7 @@
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace CurrencyProvider.Xml
+namespace CurrencyProvider.Extension
 {
     public static class XmlExtension
     {

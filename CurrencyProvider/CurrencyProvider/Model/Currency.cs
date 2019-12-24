@@ -7,7 +7,7 @@ namespace CurrencyProvider.Model
         [XmlAttribute("CurrencyCode")]
         public string CurrencyCode { get; set; }
 
-        [XmlAttribute("CurrencyCode")]
+        [XmlAttribute("CrossOrder")]
         public string CrossOrder { get; set; }
 
         [XmlAttribute("Kod")]
