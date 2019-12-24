@@ -1,10 +1,10 @@
 ﻿using CurrencyProvider.Xml;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
-using System.Xml;
 
 namespace CurrencyProvider.Service
 {
@@ -12,9 +12,61 @@ namespace CurrencyProvider.Service
         : IServiceExecuter
     {
         public string Endpoint { get; set; }
+        public ResponseType ResponseType { get; set; }
 
-        public Dictionary<string, string> Header { get; set; }
-        public Dictionary<string, string> Parameter { get; set; }
+        public Dictionary<string, string> Header { get; set; } = new Dictionary<string, string>();
+        public Dictionary<string, string> Parameter { get; set; } = new Dictionary<string, string>();
+
+        public ServiceExecuter()
+        {
+            // default settings
+            this.ResponseType = ResponseType.JSON;
+        }
+
+        public ServiceResponse<T> InvokeGet<T>(string path)
+        {
+            var result = new ServiceResponse<T>();
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    if (this.Header.Count > 0)
+                    {
+                        foreach (var kvp in this.Header)
+                        {
+                            httpClient.DefaultRequestHeaders.Add(kvp.Key, kvp.Value);
+                        }
+                    }
+
+                    var queryUrl = string.Concat(this.Endpoint, path, buildEndpointRoute());
+
+                    var response = httpClient.GetAsync(queryUrl).Result;
+                    response.EnsureSuccessStatusCode();
+
+                    var content = response.Content.ReadAsStringAsync().Result;
+
+                    result.Success = true;
+                    if (ResponseType == ResponseType.JSON)
+                    {
+                        result.Result = JsonConvert.DeserializeObject<T>(content);
+                    }
+                    else if (ResponseType == ResponseType.XML)
+                    {
+                        result.Result = content.DeserializeXML<T>();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Result = default(T);
+            }
+
+            this.Parameter.Clear();
+            this.Header.Clear();
+
+            return result;
+        }
 
         public async Task<ServiceResponse<T>> InvokeGetAsync<T>(string path)
         {

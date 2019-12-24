@@ -1,14 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 
 namespace CurrencyProvider.Model
 {
     public class Currency
     {
         [XmlAttribute("CurrencyCode")]
-        public string Code { get; set; }
+        public string CurrencyCode { get; set; }
+
+        [XmlAttribute("CurrencyCode")]
+        public string CrossOrder { get; set; }
+
+        [XmlAttribute("Kod")]
+        public string Kod { get; set; }
+
+
 
         [XmlElement(ElementName = "Unit")]
         public string Unit { get; set; }
@@ -25,12 +30,12 @@ namespace CurrencyProvider.Model
         public string ForexSelling { get; set; }
 
 
+
         [XmlElement(ElementName = "BanknoteBuying")]
         public string BanknoteBuying { get; set; }
 
         [XmlElement(ElementName = "BanknoteSelling")]
         public string BanknoteSelling { get; set; }
-        
 
 
 

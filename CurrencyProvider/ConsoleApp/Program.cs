@@ -1,15 +1,19 @@
-﻿using CurrencyProvider.Service;
+﻿using CurrencyProvider.Model;
+using CurrencyProvider.Service;
 using System;
 
 namespace ConsoleApp
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.Write("Hello World");
 
             var executer = new ServiceExecuter();
+            executer.ResponseType = ResponseType.XML;
+            executer.Endpoint = "https://www.tcmb.gov.tr";
+            var data = executer.InvokeGet<CurrencyList>("/kurlar/today.xml");
 
             Console.ReadLine();
         }
