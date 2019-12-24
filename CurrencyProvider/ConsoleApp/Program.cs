@@ -15,6 +15,9 @@ namespace ConsoleApp
             executer.Endpoint = "https://www.tcmb.gov.tr";
             var data = executer.InvokeGet<CurrencyEntityList>("/kurlar/today.xml");
 
+            var service = new CurrencyService();
+            var response = service.GetCurrencyRates(2015, 12, 10);
+
             Console.ReadLine();
         }
     }
