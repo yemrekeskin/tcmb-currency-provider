@@ -63,9 +63,8 @@ namespace CurrencyProvider.Service
                     var now = DateTime.Now;
                     var today = now.Date;
                     var nextPublishTime = today.AddHours(15).AddMinutes(31).AddDays(now.Hour >= 15 && now.Minute >= 31 ? 1 : 0);
-                    TimeSpan ts = TimeSpan.FromTicks(nextPublishTime.ToUniversalTime().Ticks);
-
-                    cacher.Add<List<Currency>>(path, currencyRates, ts);
+                    
+                    cacher.Add<List<Currency>>(path, currencyRates, nextPublishTime);
                 }
                 else
                 {

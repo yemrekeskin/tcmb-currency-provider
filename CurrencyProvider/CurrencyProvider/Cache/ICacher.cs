@@ -6,8 +6,8 @@ namespace CurrencyProvider.Cache
 {
     public interface ICacher
     {
-        T Get<T>(string name);
-        T Add<T>(string name, T data, TimeSpan? expiration);
-        void Clear(string name);
+        T Get<T>(string key);
+        void Add<T>(string key, T data, DateTimeOffset expiration);
+        void Clear(string key); 
     }
 }

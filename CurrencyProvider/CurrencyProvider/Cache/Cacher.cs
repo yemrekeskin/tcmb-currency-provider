@@ -1,39 +1,40 @@
-﻿using Microsoft.Extensions.Caching.Memory;
-using System;
+﻿using System;
+using System.Runtime.Caching;
 
 namespace CurrencyProvider.Cache
 {
     public class Cacher
         : ICacher
     {
-        private MemoryCache MemoryCache { get; set; }
+        private readonly ObjectCache Cache = MemoryCache.Default;
 
-        public T Add<T>(string name, T data, TimeSpan? expiration)
+        public void Add<T>(string key, T data, DateTimeOffset expiration)
         {
-            T cached;
-            if (!MemoryCache.TryGetValue<T>(name, out cached))
+            if (Cache[key] == null)
             {
-                cached = data;
+                //var opt = new CacheItemPolicy();
+                //opt.SlidingExpiration = expiration == null ? TimeSpan.FromHours(12) : expiration;
+                //Cache.Add(key, data, opt);
 
-                var opt = new MemoryCacheEntryOptions();
-                opt.SlidingExpiration = expiration == null ? TimeSpan.FromHours(12) : expiration;
-
-                MemoryCache.Set(name, cached, opt);
+                Cache.Add(key, data, expiration);
             }
-
-            return cached;
         }
 
         public void Clear(string name)
         {
-            MemoryCache.Remove(name);
+            Cache.Remove(name);
         }
 
-        public T Get<T>(string name)
+        public T Get<T>(string key)             
         {
-            T cached;
-            MemoryCache.TryGetValue<T>(name, out cached);
-            return cached;
+            try
+            {
+                return (T)Cache[key];
+            }
+            catch (Exception)
+            {
+                return default(T);
+            }
         }
     }
 }

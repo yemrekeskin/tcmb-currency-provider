@@ -17,6 +17,7 @@ namespace ConsoleApp
 
             var service = new CurrencyService();
             var response = service.GetCurrencyRates(2015, 12, 10);
+            var response1 = service.GetCurrencyRates(2015, 12, 10);
 
             Console.ReadLine();
         }
