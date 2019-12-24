@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CurrencyProvider.Service.CurrencyService">
+    <Position X="4.75" Y="3.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAABAAAAACAAABAAAgAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Service\CurrencyService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CurrencyProvider.Service.ServiceExecuter">
+    <Position X="2" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAABAAAAAAEAAAACAAAAQAAAgABAAAAAAAAA=</HashCode>
+      <FileName>Service\Api\ServiceExecuter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CurrencyProvider.Service.ServiceResponse&lt;T&gt;">
+    <Position X="6" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service\Api\ServiceResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CurrencyProvider.Cache.Cacher">
+    <Position X="8.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAgAAAAAABAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Cache\Cacher.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CurrencyProvider.Extension.XmlExtension">
+    <Position X="8.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extension\XmlExtension.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="CurrencyProvider.Service.IServiceExecuter">
+    <Position X="4" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAEAAAACAAAAQAAAgABAAAAAAAAA=</HashCode>
+      <FileName>Service\Api\IServiceExecuter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="CurrencyProvider.Service.ResponseType">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACCAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service\Api\ResponseType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
